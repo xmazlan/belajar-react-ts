@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 type ProfileProps = {
     nama: string
@@ -11,6 +11,11 @@ function Profile({ nama: initialNama, profesi }: ProfileProps) {
     const gantiNama = () => {
         setNama(nama === 'Mazlan' ? 'Lanma' : 'Mazlan')
     }
+
+    // 👇 useEffect di sini
+    useEffect(() => {
+        console.log('Nama berubah:', nama)
+    }, [nama]) // <- Dependency array: jalankan setiap kali "nama" berubah
 
     return (
         <div style={{ border: '1px solid #ccc', padding: '16px', borderRadius: '8px' }}>
